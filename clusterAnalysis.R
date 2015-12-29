@@ -1,5 +1,7 @@
+# Set game week
+game_week <- 18
 # Load data
-load("E:/datasci/Football/player_full_df_gw18.Rda", .GlobalEnv,verbose=TRUE)
+load(paste("E:/datasci/Football/player_full_df_gw",game_week,".Rda", sep=""), .GlobalEnv,verbose=TRUE)
 #
 # player_full_df is a matrix at this point so convert explicitly to a data.frame
 player_full_df<-as.data.frame(player_full_df)
@@ -26,7 +28,7 @@ library(plyr)
 #
 plot1 <- ggplot(player_row_df, aes(x=player_club_v, y=player_total_points_v, color=player_type_v) ) + geom_point(size=4)
 # Add a title
-plot1 <- plot1 + ggtitle("Total Points Per Player by Club")
+plot1 <- plot1 + ggtitle(paste("Game Week", game_week, " - Total Points Per Player by Club"))
 plot1 <- plot1 + theme(plot.title = element_text(size=16, face="bold", vjust=2))
 # Add axes titles
 plot1 <- plot1 + labs(x="Club", y="Total Points Per Player")
