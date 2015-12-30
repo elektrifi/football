@@ -3,8 +3,10 @@ library(jsonlite)
 library(zoo)
 library(calibrate)
 
+# Set game_week
+game_week <- 19 
 # Load data
-load("E:/datasci/Football/player_full_df_gw18.Rda", .GlobalEnv,verbose=TRUE)
+load(paste("E:/datasci/Football/player_full_df_gw", game_week, ".Rda", sep=""), .GlobalEnv,verbose=TRUE)
 
 # player_full_df is a matrix at this point so convert explicitly to a data.frame
 player_full_df<-as.data.frame(player_full_df)
@@ -131,7 +133,7 @@ roll_avg_3 <- 0
 # Set up the plot
 cl<-rainbow(15)
 par(mfrow=c(1,1))
-pdf("E:/datasci/Football/BathgateNoMoar_plots_gw_18.pdf", width=28, height=18, paper="A4r")
+pdf(paste("E:/datasci/Football/BathgateNoMoar_plots_gw_", game_week, ".pdf", sep=""), width=28, height=18, paper="A4r")
 y_ticks = c(1:25)
 x_ticks = c(1:20)
 for ( i in 1:length(player_all) )
